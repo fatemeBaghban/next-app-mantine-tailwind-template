@@ -10,6 +10,7 @@ import localFont from "next/font/local";
 import Head from "next/head";
 import "./globals.css";
 import { breakpoints, colors } from "./theme";
+import { HeaderMegaMenu } from "@/components/header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,12 +44,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" dir="rtl" suppressHydrationWarning>
       <Head>
         <ColorSchemeScript />
       </Head>
       <body className="antialiased">
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <HeaderMegaMenu />
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );
